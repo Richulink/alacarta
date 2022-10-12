@@ -1,0 +1,37 @@
+.min_footer{
+    background: scroll;
+   }
+   @media only screen and (min-width: 880px) {
+     .min_footer {
+       display: none;
+     }
+   }
+ 
+   .max_footer{
+     background: scroll;
+  }
+  @media only screen and (max-width: 880px) {
+    .max_footer {
+      display: none;
+    }
+  }
+  .f-right {
+   text-align: right;
+ }
+ .widget-title{
+    
+    font-family: 'Satisfy', sans-serif;
+    font-size: 44px;
+    color: #FFB03B;
+}
+
+.navbar{
+  
+  background-color: rgba(7, 7, 7, 0.877);
+  height: 80px;
+}
+.boton{
+  
+  background-color: rgba(7, 7, 7, 0.699);
+
+}

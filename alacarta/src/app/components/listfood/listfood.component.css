@@ -1,0 +1,106 @@
+.cont {
+   
+    overflow: hidden; 
+    margin: 10px;
+    position: relative;
+}
+.input-group{
+   width: 700px;
+    place-content: center;
+    
+}
+
+.container > .crop {
+    position:absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.menu-restaurant{
+    width: 50%;
+    float: left;
+    padding: 15px;
+    position: relative;
+}
+.menu-restaurant .menu-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    color: #FFB03B;
+}
+.menu-restaurant .menu-line {
+    position: absolute;
+    bottom: 6px;
+    border-bottom: 1px dotted rgba(0,0,0,.3);
+    margin-left: .6rem;
+    margin-right: .6rem;
+}
+.menu-restaurant .menu-price {
+    font-weight: 100;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.menu-restaurant .menu-subtitle {
+    display: block;
+    float: left;
+    color: #B1B1B1;
+    font-family: Satisfy,'Open Sans',arial;
+    font-size: 1.2rem;
+}
+.menu-restaurant span.clearfix {
+    position: relative;
+    display: block;
+}
+
+@media (min-width: 20px) and (max-width: 450px) {
+    .menu-restaurant {
+    width: 100%;
+    }
+}
+
+    .cardo{
+       
+       margin-top: 70px;
+    }
+    .card {
+        font-family: "Karla", sans-serif;
+        border-radius: 1.3em;
+    }
+
+    /*
+   gallery-trigger 
+    */
+
+    .header-h {
+        color: #FFB03B;
+        font-size: 46px;
+        font-family: 'Satisfy', sans-serif;
+        font-weight: 300;
+    }
+    .gallery-trigger ul li a.active, .gallery-trigger ul li a:hover {
+        background: #FFB03B;
+        color: #fff;
+        border: 1px solid #FFB03B;
+    }
+    .gallery-trigger ul li {
+        display: inline-block;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+    }
+    .gallery-trigger ul li a {
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #565656;
+        border-radius: 0px;
+        border: 1px solid #BBBBBB;
+        text-decoration: none;
+        cursor: pointer;
+    }
