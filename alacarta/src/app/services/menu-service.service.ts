@@ -38,7 +38,13 @@ getUrlByingredient(ingredient: any): Observable<any> {
 return this.http.get(this.urlBy+"/findByIngredients?apiKey="+this.apiKey+ingredient+"&number=2")
 }
 
+
+getURLIntolerance(): Observable<any> {
+  return this.http.get(this.url3+"?apiKey="+this.apiKey+"&query=pasta&maxFat=25&number=2")
 }
+}
+
+// intolerance https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
 // https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
 
 // https://api.spoonacular.com/recipes/{id}/analyzedInstructions

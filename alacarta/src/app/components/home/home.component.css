@@ -32,9 +32,9 @@ table {
 	border-spacing: 0;
 }
 #banner{
-    background: url(../../../assets/img/banner-bg.jpg) no-repeat center top;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../../assets/img/banner-bg.jpg) no-repeat center top;
     background-size: cover;
-    min-height: 300px;
+    min-height: 100px;
 }
 .bg-color{
     background-color: RGBA(0, 0, 0, 0.61);
@@ -45,11 +45,7 @@ table {
     font-size: 45px;
     color: #FFB03B;
 }
-#banner p{
-    font-family: 'PT Sans', sans-serif;
-    color: #fcfcfc;
-    font-size: 34px;
-}
+
 .section-padding{
     padding: 60px 0px;
 }
@@ -71,17 +67,7 @@ table {
     padding-top: 60px;
     transition: 0.5s;
 }
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s
-}
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
+
 
 
 .menu-icon
@@ -189,12 +175,6 @@ table {
     color: rgb(255, 255, 255);
 }
 
-
-.heading{
-    font-family: 'Satisfy', sans-serif;
-    color: #FFB03B;
-    font-size: 24px;
-}
 .marb-35{
     margin-bottom: 35px;
 }
@@ -231,7 +211,7 @@ table {
     color: #FFB03B;
     font-size: 32px;
     padding-bottom: 15px;
-    font-family: 'Satisfy', sans-serif;
+   
 }
 .content-holder address strong {
     color: #FFB03B;
@@ -243,27 +223,8 @@ table {
     letter-spacing: 1px;
     font-weight: 300;
 }
-.btn-read-more {
-    background: #FFB03B;
-    padding: 7px 19px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    line-height: 17px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    border-radius: 3px;
-    color: #000;
-    text-transform: uppercase;
-    margin-top: 10px;
-}
-.btn-read-more:hover
-{
-    color: #000;
-}
-/*
-#Container .mix{
-    display: none;
-}*/
+
+
 .menu-restaurant{
     width: 50%;
     float: left;
@@ -271,29 +232,26 @@ table {
     position: relative;
 }
 .menu-restaurant .menu-title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 0.2rem;
-    color: #FFB03B;
+    color: #111111;
+    background-color: rgb(235, 198, 118);
+    border-radius: 6px;
 }
-.menu-restaurant .menu-line {
-    position: absolute;
-    bottom: 6px;
-    border-bottom: 1px dotted rgba(0,0,0,.3);
-    margin-left: .6rem;
-    margin-right: .6rem;
-}
+
 .menu-restaurant .menu-price {
     font-weight: 600;
-    position: absolute;
+    position: relative;
+    color: #E8E8E8;
     right: 0;
     top: 0;
 }
 .menu-restaurant .menu-subtitle {
     display: block;
     float: left;
-    color: #B1B1B1;
-    font-family: Satisfy,'Open Sans',arial;
+    color: #f7f5f5;
+
     font-size: 1.2rem;
 }
 .menu-restaurant span.clearfix {
@@ -321,12 +279,7 @@ table {
     letter-spacing: 0.2rem;
     color: #999;
 }
-.footer .widget-title{
-    padding-bottom: 20px;
-    font-family: 'Satisfy', sans-serif;
-    font-size: 44px;
-    color: #FFB03B;
-}
+
 .footer .widget, .footer address {
     color: #999;
     text-transform: none;

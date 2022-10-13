@@ -52,7 +52,7 @@ return this.dataItem$.asObservable();
 
 
 
-   /** add or update items in cart */
+ 
    addOrUpdate(item: any) {
     // trae el objeto desde el local storage
     this.cartObj = this.getCartData();
@@ -64,7 +64,7 @@ return this.dataItem$.asObservable();
         items: {
           [item.id]: {
             addedOn: new Date().toLocaleString(),
-            total: item.total ,
+            total: item.total,
             itemId: item.id,
             category: item.category,
             title: item.title,
@@ -72,17 +72,18 @@ return this.dataItem$.asObservable();
             imageUrl: item.imageUrl,
             cookingMinutes: item.cookingMinutes,
             vegan: item.vegan,
-            fulldishes: item.fulldishes,//cantidad de platos
-            healthScore: item.healthScore 
+            fulldishes: item.fulldishes,
+            healthScore: item.healthScore
           },
         },
         healtscoreItem: item.healthScore,
-        totalAmt: item.pricePerServing,//cambiado por price
+        totalAmt: item.pricePerServing,
+   
       };
 
       this.handleLocalStorageService.addCartData(cart);
     } else {
-      // add a new item to cart
+      //se agrega un nuevo item
       if (this.cartObj.items[item.id] == undefined) {
         const itemD: ItemDetails = {
           [item.id]: {
@@ -97,23 +98,24 @@ return this.dataItem$.asObservable();
             vegan: item.vegan,
             fulldishes: item.fulldishes,//cantidad de platos
             healthScore: item.healthScore 
-          },
-          
-        };
-
-        // any better way?
+          }, 
+        }
+        
         this.cartObj = {
           items: {
             ...this.cartObj.items,
             [item.id]: itemD[item.id],
           },
-          healtscoreItem : this.getAverage(item.healthScore, true),
          
+          healtscoreItem : this.getAverage(item.healthScore, true),
           totalAmt: this.getCartTotalAmount(item.pricePerServing, true),
+          ///
+       
         };
 
         this.handleLocalStorageService.addCartData(this.cartObj);
       } else {
+        
         
         const itemD = this.cartObj.items[item.id];
         itemD.total += 1;
@@ -135,7 +137,8 @@ return this.dataItem$.asObservable();
       const itemD = this.cartObj.items[item.id]; 
  
       if (itemD.total > 1) { 
-        itemD.total -= 1; 
+        
+        itemD.total = 0 - 1; 
         this.cartObj.items[item.id] = itemD;
 
       } else if (itemD.total == 1) { 
@@ -143,7 +146,7 @@ return this.dataItem$.asObservable();
       }
 
      this.cartObj.healtscoreItem = this.getAverage(item.healthScore, true),
-      this.cartObj.totalAmt = this.getCartTotalAmount(item.price, false); // como es falso solo resta el precio al totalAmt     
+      this.cartObj.totalAmt = this.getCartTotalAmount(item.pricePerServing, false); // como es falso solo resta el precio al totalAmt     
     }
 
     this.handleLocalStorageService.addCartData(this.cartObj);
@@ -179,6 +182,11 @@ getCartTotalAmount(pricePerServing: number, add: boolean): number {
     return amt;
   }
 
+
+  clearCart() {
+    this.cartObj = null;
+    this.handleLocalStorageService.removeCartData();
+  }
 
   
 }

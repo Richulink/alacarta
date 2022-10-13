@@ -4,5 +4,6 @@ export interface Cart {
     items: ItemDetails;
     totalAmt: number;
     healtscoreItem:number;
-   
+    
 }
+

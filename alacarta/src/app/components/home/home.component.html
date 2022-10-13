@@ -6,6 +6,31 @@
 <body>
     <!--banner-->
     <section id="banner">
+
+  <!--lista-->
+  <div class="row">
+
+    <div id="Container">
+    
+      <div class="mix  menu-restaurant" data-myorder="2" *ngFor="let info of cartArray" >
+        <span class="clearfix">
+          <h6 class="menu-title"  >
+           {{info.title}}</h6>
+           <span class="menu-price">$ {{info.pricePerServing}}</span>
+        </span>
+        
+        <span class="menu-subtitle"> <strong>
+          Healt score: 
+        </strong>{{info.healthScore}} </span>       
+      </div>
+    </div>
+  </div>
+   <!--lista-->
+
+
+
+
+
       <div class="">
       
         <div class="container">
@@ -19,6 +44,10 @@
       </div>
     </section>
     <!-- / banner -->
+
+
+
+
 
 
     <app-listfood></app-listfood>

@@ -33,10 +33,3 @@ export class MenuComponent implements OnInit {
 }
 
 
-
-
-/*
-this.dataService.selecteDataItem.subscribe(res=>{
-       const dataItem = this.dataService.selecteDataItem;
-    })
-*/

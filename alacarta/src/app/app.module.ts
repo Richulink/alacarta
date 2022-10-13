@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ListfoodComponent } from './components/listfood/listfood.component';
 import { NavComponent } from './components/nav/nav.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { PipeFilter } from './pipe-filter';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     HomeComponent,
     MenuComponent,
     ListfoodComponent,
-    NavComponent
+    NavComponent,
+    PipeFilter
   ],
   imports: [
     FormsModule,
