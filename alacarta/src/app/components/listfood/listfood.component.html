@@ -14,24 +14,26 @@
             <li><a class="filter" data-filter="all" (click)="showAll()"> ver todo</a></li>
             <li><a class="filter" data-filter=".category-1">-------</a></li>
             <li><a class="filter" data-filter=".category-2">-------</a></li>
-            <li><a class="filter" data-filter=".category-3"   (click)="sinGluten()"> sin gluten</a></li>
+            <li><a class="filter" data-filter=".category-3"   (click)="sinGluten()">Pastas</a></li>
           </ul>  
-          
+          <form action="">
+            <div class="container input-group">
+              <input type="text" class="form-control" #inputText >
+             
+            <button (click)="onInput(inputText.value)" type="submit" class="btn btn-primary"><i class="bi bi-search"></i> buscar</button>
+            </div> 
+          </form>
         </div>
+        
       </div>
     </div>
+
   </section>
   <!--/ menu -->
 
 
-<form action="" #f="ngForm" (ngSubmit)="onSubmit(f)" >
-  <div class="container input-group">
-    <input type="text" class="form-control" name="first" ngModel required #first="ngModel">
-    <span class="input-group-text" ><i class="bi bi-search"></i></span>
-  
-  </div> 
 
-</form>
+
    
 
 
@@ -62,8 +64,8 @@
             <a class="btn btn-success" (click)="enviar(item)" >Características</a>
            -->
            <a class="btn btn-success m-2"  [routerLink]="['/menu',item.id]" target="_blank" >Preparación</a>
-          <a class="btn btn-success m-2" (click)="addItem(item)" >seleccionar</a>
-          <a class="btn btn-success m-2"  (click)="removeItem(item)">cancelar<i class="bi bi-journal-check"></i> </a>
+          <a class="btn btn-outline-success m-2" (click)="addItem(item)" ><i class="bi bi-check2-square"></i></a>
+          <a class="btn btn-outline-danger m-2"  (click)="removeItem(item)"><i class="bi bi-file-x"></i> </a>
           
         </div>
       </div>

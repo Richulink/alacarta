@@ -1,84 +1,87 @@
-
-
 <app-nav></app-nav>
 
 
 <body>
-    <!--banner-->
-    <section id="banner">
+  <!--banner-->
+  <section id="banner">
 
-  <!--lista-->
-  <div class="row">
+    <!--lista-->
+    <div class="row" *ngIf="isCartEmpty == true">
 
-    <div id="Container">
-    
-      <div class="mix  menu-restaurant" data-myorder="2" *ngFor="let info of cartArray" >
-        <span class="clearfix">
-          <h6 class="menu-title"  >
-           {{info.title}}</h6>
-           <span class="menu-price">$ {{info.pricePerServing}}</span>
-        </span>
-        
-        <span class="menu-subtitle"> <strong>
-          Healt score: 
-        </strong>{{info.healthScore}} </span>       
+      <div id="Container">
+
+        <div class="mix  menu-restaurant" data-myorder="2" *ngFor="let info of cartArray">
+          <span class="clearfix">
+            <h6 class="menu-title"><i class="bi bi-caret-right"></i> {{info.title}}</h6>
+            <h3 class="menu-price">$ {{info.pricePerServing}}</h3>
+          </span>
+          <h6 class="type-plato" *ngIf="info.vegan == true"> <i class="bi bi-check-lg"></i> plato vegano</h6>
+          
+          <h6 class="menu-subtitle"> <strong>Healt score: </strong>{{info.healthScore}}</h6>
+
+
+
+
+
+        </div>
       </div>
+      
+    </div>
+    <button *ngIf="isCartEmpty == true" type="button" (click)="clearCart()" class="btn btn-outline-warning m-4">limpiar tabla</button>
+    <!--lista-->
+
+
+
+
+
+    <div class="">
+
+      <div class="container">
+        <div class="widget">
+          <div class="text-center ">
+            <!---->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / banner -->
+
+
+
+
+
+
+  <app-listfood (newItemEvent)="searchCart($event)"></app-listfood>
+
+  <!-- footer -->
+  <footer class="footer text-center">
+    <div class="footer-top">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6 text-center">
+          <div class="widget">
+            <h4 class="widget-title">Alacarta</h4>
+            <h6>spoonacular</h6>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+<nav class="navbar fixed-bottom navbar-expand-lg" id="cart-bar" *ngIf="isCartEmpty == true">
+  <div class="container" id="cart-bar-div ">
+
+    <span class="navbar-brand navtextcolor " > <i class="bi bi-check2-circle" *ngIf="totalItems == 4"> Genial!</i> 
+          ({{totalItems}}) </span>
+    <div>
+      <span id="subtotal" class="subtotal">precio total:</span>
+      <span class="preciototal"> ${{totalAmt}} </span>
+
     </div>
   </div>
-   <!--lista-->
-
-
-
-
-
-      <div class="">
-      
-        <div class="container">
-          <div class="widget">
-            <div class="text-center ">
-             <!---->
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- / banner -->
-
-
-
-
-
-
-    <app-listfood></app-listfood>
-
-    <!-- footer -->
-    <footer class="footer text-center">
-      <div class="footer-top">
-        <div class="row">
-          <div class="col-md-offset-3 col-md-6 text-center">
-            <div class="widget">
-              <h4 class="widget-title">Alacarta</h4>
-              <h6>spoonacular</h6>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
- 
-  
-  </body>
-
-  <nav class="navbar fixed-bottom navbar-expand-lg" id="cart-bar" *ngIf="isCartEmpty == false && hideCartBar == false">
-    <div class="container" id="cart-bar-div ">
-        <span class="navbar-brand "> <strong> cantidad de platos : </strong> ({{totalItems}})</span>
-
-        <div>
-            <span id="subtotal">
-              precio total : ${{totalAmt}}</span>
-            <button type="button" class="btn btn-outline-danger m-2" id="view-cart-btn" *ngIf="goToOrders==false" >Continue</button>
-            <button type="button" class="btn btn-outline-success m-2" id="view-cart-btn" *ngIf="goToOrders==true" >Place order</button>
-        </div>
-    </div>
 </nav>

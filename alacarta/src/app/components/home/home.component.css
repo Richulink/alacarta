@@ -12,6 +12,19 @@ body {
     font-weight: 400;
     overflow-x: hidden; 
 }
+.preciototal{
+color: #ffffff;
+}
+.bi-check2-circle{
+    color: chartreuse;
+}
+
+.type-plato{
+    color: rgb(5, 5, 5);
+   background-color: rgba(0, 255, 255, 0.568);
+   width: 300px;
+   
+}
 
 .input-group{
 width:700px;
@@ -236,14 +249,16 @@ table {
     font-weight: 500;
     letter-spacing: 0.2rem;
     color: #111111;
-    background-color: rgb(235, 198, 118);
+    background-color: rgb(247, 217, 152);
     border-radius: 6px;
 }
 
 .menu-restaurant .menu-price {
     font-weight: 600;
+    background-color: rgba(17, 17, 17, 0.514);
+    width: 300px;
     position: relative;
-    color: #E8E8E8;
+    color: #ffffff;
     right: 0;
     top: 0;
 }
@@ -344,15 +359,26 @@ table {
     .sidenav a {font-size: 18px;}
 }
 
-
+.btn-outline-warning{
+    width: 300´px;
+    border-radius:4px;
+}
 
 
 /*
 nav
 */
 .navbar{
-    background-color: #E8E8E8;
+    background-color: #030303;
 }
+.navtextcolor{
+    color: #d4d3d3;
+}
+.subtotal{
+    color: #cacaca;
+}
+
+
 @media (min-width: 481px) and (max-width: 767px) {
     .navbar-brand {
         font-size: 17px;

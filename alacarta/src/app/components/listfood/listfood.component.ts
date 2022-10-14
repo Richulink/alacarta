@@ -1,9 +1,10 @@
-import { getLocaleCurrencyCode } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 import { ComplexSearch } from 'src/app/interfaces/complex-search';
 import { Cart } from 'src/app/Model/cart';
-import { PipeFilter } from 'src/app/pipe-filter';
+
 
 import { CartHandleService } from 'src/app/services/cart-handle.service';
 import { HandleLocalStorageService } from 'src/app/services/handle-local-storage.service';
@@ -15,7 +16,7 @@ import { MenuServiceService } from 'src/app/services/menu-service.service';
   selector: 'app-listfood',
   templateUrl: './listfood.component.html',
   styleUrls: ['./listfood.component.css'],
-  providers:[PipeFilter]
+ // providers:[PipeFilter]
 })
 export class ListfoodComponent implements OnInit {
   items: any[] = [];
@@ -52,8 +53,10 @@ export class ListfoodComponent implements OnInit {
   //data: any [] = [];
  
 
-  isEmpty: boolean;
-  isCartEmpty: boolean;
+  isEmpty: boolean = false;
+
+
+  public isCartEmpty: boolean; // bander de que esta bacio
 
 
   constructor(private service: MenuServiceService,
@@ -66,7 +69,7 @@ export class ListfoodComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.cartArray)
+   
    
   }
 
@@ -126,17 +129,20 @@ export class ListfoodComponent implements OnInit {
   
     this.cartObj = JSON.parse(this.handleLocalStorageService.getCartData());
     if (this.cartObj == null) { //si no hay item devuelve true
-      this.isEmpty = true;
+      this.isCartEmpty = this.isCartEmpty = true
+      console.log("ahora esta vacio")
+     
+      // this.isEmpty = true;
     }
   }
-  /*
-  clearCart() {
-    this.isCartEmpty = true;
-    this.cartArray = [];
-    this.cartObj = null;
-    this.carthandler.clearCart();
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  onInput(item: string): void{
+     // console.log("el item",item)
+      this.newItemEvent.emit(item);
   }
-  */
+
 
  
 }

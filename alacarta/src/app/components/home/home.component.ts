@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/Model/cart';
+import { CartHandleService } from 'src/app/services/cart-handle.service';
 import { HandleLocalStorageService } from 'src/app/services/handle-local-storage.service';
 import { MenuServiceService } from 'src/app/services/menu-service.service';
+import { ListfoodComponent } from '../listfood/listfood.component';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import { MenuServiceService } from 'src/app/services/menu-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  isCartEmpty: boolean = true;
+  isCartEmpty: boolean ;
   totalAmt: number;
   totalItems: number;
   goToOrders: boolean = false;
@@ -20,7 +22,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor( private service: MenuServiceService,
-    private handleLocalStorage: HandleLocalStorageService
+    private handleLocalStorage: HandleLocalStorageService,
+   private cartHandleService : CartHandleService
     
     ) 
     {
@@ -28,11 +31,15 @@ export class HomeComponent implements OnInit {
   
         this.itemsdata = data
   
-        const itemD = this.itemsdata.items
+       
        
   
         if (this.itemsdata != null && this.itemsdata.items != undefined) {
+          console.log(this.itemsdata, "estado de la variable")
+         
           this.cartArray = []; //lo vacia para que no se repita
+
+          const itemD = this.itemsdata.items
         for (let item in itemD) {
          
   
@@ -46,27 +53,47 @@ export class HomeComponent implements OnInit {
   
           };
           this.cartArray.push(obj);
+          this.isCartEmpty = true;
          
         }  
+      } else {
+        //this.isCartEmpty = true;
       }
         if (data != null && Object.keys(data.items).length > 0) {
-          this.isCartEmpty = false;
+         
+         
   
           this.totalAmt = data.totalAmt;
           this.totalItems = Object.keys(data.items).length; 
         }
-        if (data == null) {
-          this.isCartEmpty = true;
+        else if(this.itemsdata == null){
+          
+          this.isCartEmpty = this.cartHandleService.isEmptyCart;
+          console.log("el booleano del home",this.isCartEmpty)
+
+
         }
+       
+        
+       
       });
      }
 
-
+searchCart(event: string): void{
+console.log("desde el home",event);
+}
 
 
   ngOnInit(): void {
  
   }
+  clearCart() {
+   
+    this.handleLocalStorage.removeCartData();
+  }
+
+
+  
 /*
 
 

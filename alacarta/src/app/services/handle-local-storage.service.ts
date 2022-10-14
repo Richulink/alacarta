@@ -36,7 +36,6 @@ export class HandleLocalStorageService {
   
   removeCartData() {
   
-  
     if (localStorage.getItem('datosDeLcarta') != null) {
       localStorage.removeItem('datosDeLcarta');
     }

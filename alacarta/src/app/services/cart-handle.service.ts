@@ -18,6 +18,7 @@ export class CartHandleService implements OnInit{
     
    }
 
+   public isEmptyCart : boolean;
 
    private dataItem$ = new BehaviorSubject<ComplexSearch>(null);
    
@@ -183,10 +184,7 @@ getCartTotalAmount(pricePerServing: number, add: boolean): number {
   }
 
 
-  clearCart() {
-    this.cartObj = null;
-    this.handleLocalStorageService.removeCartData();
-  }
+ 
 
   
 }
