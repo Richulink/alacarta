@@ -9,32 +9,31 @@ import { HandleLocalStorageService } from './handle-local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CartHandleService implements OnInit{
+export class CartHandleService implements OnInit {
+
   healtscoreItem: Cart;
   cartObj: Cart;
   itemsArray: ItemDetails[] = [];
   itemDetails: ItemDetails;
   constructor(private handleLocalStorageService: HandleLocalStorageService) {
-    
-   }
 
-   public isEmptyCart : boolean;
-
-   private dataItem$ = new BehaviorSubject<ComplexSearch>(null);
-   
-
-
-   public selectedItem: ComplexSearch;
+  }
+  public numberofdishes: number;
+  public isEmptyCart: boolean;
+  public totalFinal :boolean;
+  private dataItem$ = new BehaviorSubject<ComplexSearch>(null);
+  public selectedItem: ComplexSearch;
 
 
   ngOnInit(): void {
     this.cartObj = this.getCartData();
+
   }
 
-  get selecteDataItem():Observable<ComplexSearch>{
-return this.dataItem$.asObservable();
+  get selecteDataItem(): Observable<ComplexSearch> {
+    return this.dataItem$.asObservable();
   }
-  setDataItem(data: ComplexSearch):void{
+  setDataItem(data: ComplexSearch): void {
     this.dataItem$.next(data);
   }
 
@@ -53,14 +52,15 @@ return this.dataItem$.asObservable();
 
 
 
- 
-   addOrUpdate(item: any) {
+
+  addOrUpdate(item: any) {
     // trae el objeto desde el local storage
     this.cartObj = this.getCartData();
-
+   
     // se agrega la cart primera vez
-    if (this.cartObj == null) {
-      
+    if (this.cartObj == null ) {
+      this.numberofdishes = 0;
+console.log(this.numberofdishes , "estado del plato en el if primera vuelta")
       const cart: Cart = {
         items: {
           [item.id]: {
@@ -79,53 +79,58 @@ return this.dataItem$.asObservable();
         },
         healtscoreItem: item.healthScore,
         totalAmt: item.pricePerServing,
-   
+
       };
 
       this.handleLocalStorageService.addCartData(cart);
     } else {
       //se agrega un nuevo item
-      if (this.cartObj.items[item.id] == undefined) {
+      if (this.cartObj.items[item.id] == undefined && this.numberofdishes <= 3 ) {
+        
+        console.log(this.numberofdishes, " segunda vuelta")
         const itemD: ItemDetails = {
           [item.id]: {
             addedOn: new Date().toLocaleString(),
             total: item.total,
             itemId: item.id,
             category: item.category,
-            title: item. title,
-            pricePerServing:  item.pricePerServing,
+            title: item.title,
+            pricePerServing: item.pricePerServing,
             imageUrl: item.imageUrl,
             cookingMinutes: item.cookingMinutes,
             vegan: item.vegan,
             fulldishes: item.fulldishes,//cantidad de platos
-            healthScore: item.healthScore 
-          }, 
+            healthScore: item.healthScore
+          },
         }
-        
+
         this.cartObj = {
           items: {
             ...this.cartObj.items,
             [item.id]: itemD[item.id],
           },
-         
-          healtscoreItem : this.getAverage(item.healthScore, true),
+
+          healtscoreItem: this.getAverage(item.healthScore, true),
           totalAmt: this.getCartTotalAmount(item.pricePerServing, true),
           ///
-       
+
         };
 
         this.handleLocalStorageService.addCartData(this.cartObj);
       } else {
-        
-        
+
+       if(this.numberofdishes <= 3){
+
+       
         const itemD = this.cartObj.items[item.id];
         itemD.total += 1;
         this.cartObj.items[item.id] = itemD;
 
         this.cartObj.healtscoreItem = this.getAverage(item.healthScore, true), ///// healtScore 
-        this.cartObj.totalAmt = this.getCartTotalAmount(item.pricePerServing, true);
+          this.cartObj.totalAmt = this.getCartTotalAmount(item.pricePerServing, true);
 
         this.handleLocalStorageService.addCartData(this.cartObj);
+       }
       }
     }
   }
@@ -135,43 +140,43 @@ return this.dataItem$.asObservable();
     this.cartObj = this.getCartData();
 
     if (this.cartObj.items != null) {
-      const itemD = this.cartObj.items[item.id]; 
- 
-      if (itemD.total > 1) { 
-        
-        itemD.total = 0 - 1; 
-        this.cartObj.items[item.id] = itemD;
+      const itemD = this.cartObj.items[item.id];
 
-      } else if (itemD.total == 1) { 
+      if (itemD.total > 1) {
+
+        itemD.total = 0 - 1;
+        this.cartObj.items[item.id] = itemD;
+        console.log(this.totalFinal, "estado del plato en el if")
+      } else if (itemD.total == 1) {
         delete this.cartObj.items[item.id];
       }
 
-     this.cartObj.healtscoreItem = this.getAverage(item.healthScore, true),
-      this.cartObj.totalAmt = this.getCartTotalAmount(item.pricePerServing, false); // como es falso solo resta el precio al totalAmt     
+      this.cartObj.healtscoreItem = this.getAverage(item.healthScore, true),
+        this.cartObj.totalAmt = this.getCartTotalAmount(item.pricePerServing, false); // como es falso solo resta el precio al totalAmt     
     }
 
     this.handleLocalStorageService.addCartData(this.cartObj);
   }
 
 
-getAverage(healthScore: number, add: boolean): number{
+  getAverage(healthScore: number, add: boolean): number {
 
-  let amt: number;
+    let amt: number;
 
-  if (add == true) { //le puse false de prueba
-    amt = 2 / Number(this.cartObj.healtscoreItem) + Number(healthScore);
-  } else {
-    amt = 2 / Number(this.cartObj.healtscoreItem) - Number(healthScore);
+    if (add == true) { //le puse false de prueba
+      amt = 2 / Number(this.cartObj.healtscoreItem) + Number(healthScore);
+    } else {
+      amt = 2 / Number(this.cartObj.healtscoreItem) - Number(healthScore);
+    }
+
+    return amt;
+
+
   }
 
-  return amt;
 
 
-}
-
-
-
-getCartTotalAmount(pricePerServing: number, add: boolean): number {
+  getCartTotalAmount(pricePerServing: number, add: boolean): number {
     let amt: number;
 
     if (add == true) { //le puse false de prueba
@@ -184,7 +189,7 @@ getCartTotalAmount(pricePerServing: number, add: boolean): number {
   }
 
 
- 
 
-  
+
+
 }

@@ -362,6 +362,8 @@ table {
 .btn-outline-warning{
     width: 300´px;
     border-radius:4px;
+    background-color: #030303a6;
+   color: #ffdf4f;
 }
 
 

@@ -12,130 +12,91 @@ import { ListfoodComponent } from '../listfood/listfood.component';
 })
 export class HomeComponent implements OnInit {
 
-  isCartEmpty: boolean ;
+
+  isCartEmpty: boolean;
   totalAmt: number;
-  totalItems: number;
+
+  totalItems: number = 0;
+
   goToOrders: boolean = false;
   hideCartBar: boolean = false;
   itemsdata: Cart;
-  cartArray: any [] =[];
+  cartArray: any[] = [];
+ 
+  
 
 
-  constructor( private service: MenuServiceService,
+
+  constructor(private service: MenuServiceService,
     private handleLocalStorage: HandleLocalStorageService,
-   private cartHandleService : CartHandleService
-    
-    ) 
-    {
-      this.handleLocalStorage.getCartDataObservable().subscribe((data) => {
-  
-        this.itemsdata = data
-  
-       
-       
-  
-        if (this.itemsdata != null && this.itemsdata.items != undefined) {
-          console.log(this.itemsdata, "estado de la variable")
-         
-          this.cartArray = []; //lo vacia para que no se repita
+    private cartHandleService: CartHandleService
 
-          const itemD = this.itemsdata.items
+  ) {
+    this.handleLocalStorage.getCartDataObservable().subscribe((data) => {
+
+      this.itemsdata = data
+
+      ///
+
+      //
+
+      if (this.itemsdata != null && this.itemsdata.items != undefined) {
+       
+
+        this.cartArray = []; //lo vacia para que no se repita
+
+        const itemD = this.itemsdata.items
         for (let item in itemD) {
-         
-  
+
+
           const itemObj = itemD[item];
-  
+
           const obj = {
             title: itemObj.title,
             healthScore: itemObj.healthScore,
             vegan: itemObj.vegan,
             pricePerServing: itemObj.pricePerServing,
-  
+
           };
           this.cartArray.push(obj);
           this.isCartEmpty = true;
-         
-        }  
-      } else {
-        //this.isCartEmpty = true;
+
+        }
       }
-        if (data != null && Object.keys(data.items).length > 0) {
-         
-         
-  
-          this.totalAmt = data.totalAmt;
-          this.totalItems = Object.keys(data.items).length; 
-        }
-        else if(this.itemsdata == null){
-          
-          this.isCartEmpty = this.cartHandleService.isEmptyCart;
-          console.log("el booleano del home",this.isCartEmpty)
-
-
-        }
-       
-        
-       
-      });
-     }
-
-searchCart(event: string): void{
-console.log("desde el home",event);
-}
-
-
-  ngOnInit(): void {
- 
-  }
-  clearCart() {
-   
-    this.handleLocalStorage.removeCartData();
-  }
-
-
-  
-/*
-
-
-      if (this.itemsdata != null && this.itemsdata.items != undefined) {
-        this.isCartEmpty = false;
-        const itemD = this.itemsdata.items;
-
-        for (let item in itemD) {
-          const itemObj = itemD[item];
-
-          const obj = {
-
-            title: itemObj.title,
-            healthScore: itemObj.healthScore,
-            vegan: itemObj.vegan,
-            pricePerServing: itemObj.pricePerServing,
-
-          };
-          this.cartArray.push(obj);
-        }
+      if (data != null && Object.keys(data.items).length > 0) {
+        this.totalAmt = data.totalAmt;
+        this.totalItems = Object.keys(data.items).length;
+        //
+        this.cartHandleService.numberofdishes = this.totalItems
+        //
+      }
+      else if (this.itemsdata == null) {
+        this.isCartEmpty = this.cartHandleService.isEmptyCart;
+        this.cartHandleService.numberofdishes, "esta es la cantidad de platos"
       }
     });
 
-
-
-
-
-*/
-
-
-
-
-
-
-
-
-/*
-  async ngOnInit(): Promise<void> {
-
-    console.log( await this.service.complexS.results[0]+"la variable desde el servicio")
-
-    
+    /*
+    if (this.totalItems <= 4){
+          this.cartHandleService.totalFinal = true;
+    }
+    */
   }
-*/
+
+  searchCart(event: string): void {
+    console.log("desde el home", event);
+
+  }
+
+
+  ngOnInit(): void {
+    console.log()
+
+  }
+
+
+  clearCart() {
+
+    this.handleLocalStorage.removeCartData();
+  }
 }

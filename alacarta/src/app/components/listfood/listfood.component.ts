@@ -65,7 +65,7 @@ export class ListfoodComponent implements OnInit {
 
   ) {
     this.cartObj = JSON.parse(this.handleLocalStorageService.getCartData());
-     
+    
   }
   
   ngOnInit(): void {
