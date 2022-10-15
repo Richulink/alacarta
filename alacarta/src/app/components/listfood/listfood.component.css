@@ -1,5 +1,5 @@
 .cont {
-   
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     overflow: hidden; 
     margin: 10px;
     position: relative;
@@ -9,7 +9,27 @@
     place-content: center;
     
 }
-
+.type-plato{
+    color: rgb(5, 5, 5);
+   background-color: rgba(0, 255, 255, 0.568);
+   border-radius: 12px;
+   
+}
+.card-precio{
+    color: rgb(34, 34, 34);
+ 
+}
+.popular{
+   
+    background-color: rgb(65, 63, 63);
+   
+    border-radius: 12px;
+    box-shadow: 10px 5px 5px black;
+    color: #fff;
+}
+.bi-gem{
+    color: #FFB03B;
+}
 .container > .crop {
     position:absolute;
     left: -100%;

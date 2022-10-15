@@ -4,48 +4,25 @@
 <body id="banner">
   <app-nav></app-nav>
 
-    <!--banner-->
-    <section >
-      <div class="">
-      
-        <div class="container">
-          <div class="widget">
-            <div class="text-center ">
-            
-          
-            <h2 class="header-h ">
-              Preparación
-            </h2>
+        <div class="container text-center">  
+            <h2 class="header-h "> Preparación </h2>
 
             <div class="list-group" *ngFor="let list of lista; " >
-              <a  class="list-group-item list-group-item-action m-4" >
+              <a  class="list-group-item " >
                 <li >
                   <h3 class="mb-1" *ngFor="let subform of list.steps">
                      <strong>{{subform.number}}........</strong> {{subform.step}}</h3> 
                 </li>
-                
-               
-                  
               </a>
             </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- / banner -->
+            </div>    
   </body>
 
-      <!-- footer -->
+
       <footer class="footer text-center">
         <div class="footer-top">
-          <div class="row">
-           
-              <div class="widget">
-               
-                <h3>spoonacular</h3>
-                
-              </div>
+          <div class="row"> 
+                <h3>spoonacular</h3>  
             </div>
             
         </div>

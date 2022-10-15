@@ -4,16 +4,12 @@ body {
     color: #717f86;
     font-size: 16px;
 	font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+    
     overflow-x: hidden; 
 }
 
 .footer {
-    height: 100%;
-    width: 100%;
     background-color: #222;
-    position: relative;
-    z-index: 1;
 }
 
 h3{
@@ -29,12 +25,11 @@ h3{
 
 
 #banner{
-    background:  linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.5)), url(../../../assets/img/banner-bg.jpg) no-repeat center top;
-    background-size: cover;
-    min-height:90.1vh;
-   
+    background:  linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.5)),
+    url(../../../assets/img/banner-bg.jpg) no-repeat center top;
     
-   
+    background-size: cover;
+     
 }
 h2{
    color: aliceblue;
@@ -47,13 +42,11 @@ h2{
     font-size: 46px;
     font-family: 'Satisfy', sans-serif;
     font-weight: 300px;
-    -webkit-text-stroke: 0.1px rgb(155, 22, 4);
-   
-  
-   
+    -webkit-text-stroke: 0.1px rgb(155, 22, 4);  
 }
 
 .list-group-item{
+    content: center;
     background-color: rgba(0, 0, 0, 0.856);
     color: rgb(219, 217, 217);
 }

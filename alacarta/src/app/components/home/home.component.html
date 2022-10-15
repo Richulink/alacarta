@@ -1,14 +1,14 @@
 <app-nav></app-nav>
 
 
-<body>
+<body >
   <!--banner-->
-  <section id="banner">
+  <section id="banner" >
 
     <!--lista-->
     <div class="row" *ngIf="isCartEmpty == true">
 
-      <div id="Container">
+      <div id="Container ">
 
         <div class="mix  menu-restaurant" data-myorder="2" *ngFor="let info of cartArray">
           <span class="clearfix">
@@ -18,33 +18,11 @@
           <h6 class="type-plato" *ngIf="info.vegan == true"> <i class="bi bi-check-lg"></i> plato vegano</h6>
           
           <h6 class="menu-subtitle"> <strong>Healt score: </strong>{{info.healthScore}}</h6>
-
-
-
-
-
         </div>
-      </div>
-      
+      </div>     
     </div>
     <button *ngIf="isCartEmpty == true" type="button" (click)="clearCart()" class="btn btn-outline-warning m-4">limpiar menú</button>
     <!--lista-->
-
-
-
-
-
-    <div class="">
-
-      <div class="container">
-        <div class="widget">
-          <div class="text-center ">
-            <!---->
-
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
   <!-- / banner -->
 
@@ -80,7 +58,7 @@
           ({{totalItems}}) </span>
     <div>
       <span id="subtotal" class="subtotal">precio total:</span>
-      <span class="preciototal"> ${{totalAmt}} </span>
+      <span class="preciototal" maxlength="4"> ${{totalAmt}} </span>
 
     </div>
   </div>

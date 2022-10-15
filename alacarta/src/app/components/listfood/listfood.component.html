@@ -14,7 +14,7 @@
             <li><a class="filter" data-filter="all" (click)="showAll()"> ver todo</a></li>
             <li><a class="filter" data-filter=".category-1">-------</a></li>
             <li><a class="filter" data-filter=".category-2">-------</a></li>
-            <li><a class="filter" data-filter=".category-3"   (click)="sinGluten()">Pastas</a></li>
+            <li><a class="filter" data-filter=".category-3"   (click)="pastas()">Pastas</a></li>
           </ul>  
           <form action="">
             <div class="container input-group">
@@ -31,74 +31,29 @@
   </section>
   <!--/ menu -->
 
-
-
-
-   
-
-
-
-
-<div class=" text-center ">
+<div class="text-center ">
   <div class="row cardo">
-    <!--*ngFor="let item of items"
-[src]="item.image"
-{{item.title}}
-[href]="item.link"
-
-[href]="item.link"
--->
-    <div class="col" *ngFor="let item of items">
+    <div class="col " *ngFor="let item of items">
       <div class="card cont " style="width: 18rem;">
         <img class="crop" [src]="item.image" alt="">
         <div class="card-body">
           <h5 class="card-title"> <strong>
               {{item.title}} 
             </strong></h5>
-          <h5 class="card-title" *ngIf="item.pricePerServing" >$ {{item.pricePerServing}}</h5>
+            <h6 class="type-plato" *ngIf="item.vegan == true"> plato vegano</h6>  
+            <h6 class="popular" *ngIf="item.veryPopular == true">popular <i class="bi bi-gem m-2"></i></h6>
+            <h5 *ngIf="item.glutenFree == true">--libre de gluten--</h5>
+            
+          <h5 class="card-precio m-4" *ngIf="item.pricePerServing" >$ {{item.pricePerServing}}</h5>
           <h5 class="card-title"></h5>
           <a></a>
-
-          <!--
-            <div [innerHtml]="item.content"></div>
-            <a class="btn btn-success" (click)="enviar(item)" >Características</a>
-           -->
-           <a class="btn btn-success m-2"  [routerLink]="['/menu',item.id]" target="_blank" >Preparación</a>
-          <a class="btn btn-outline-success m-2" (click)="addItem(item)" ><i class="bi bi-check2-square"></i></a>
-          <a class="btn btn-outline-danger m-2"  (click)="removeItem(item)"><i class="bi bi-file-x"></i> </a>
-          
+           <a class="btn  btn-outline-success m-2"  [routerLink]="['/menu',item.id]" target="_blank" >Preparación</a>
+          <a class="btn btn-outline-success m-2" (click)="addItem(item)" ><i class="bi bi-check2-square "></i></a>
+          <a class="btn btn-outline-danger m-2"  (click)="removeItem(item)"><i class="bi bi-file-x"></i> </a>        
         </div>
-      </div>
-    </div>
-
-
-<!--
-  (click)="populateCartData()"
-  data-bs-toggle="modal" data-bs-target="#exampleModal" 
--->>
-
-
-  </div>
-</div>
-
-
-
-<!-- Modal -->
-<div *ngFor="let item of items" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{item.title}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" [innerHtml]="item.summary">
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Steps</button>
-        <button type="button" class="btn btn-primary" >Select</button>
-      </div>
+      </div>   
     </div>
   </div>
 </div>
+
+

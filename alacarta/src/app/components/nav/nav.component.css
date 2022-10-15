@@ -1,20 +1,6 @@
-.min_footer{
-    background: scroll;
-   }
-   @media only screen and (min-width: 880px) {
-     .min_footer {
-       display: none;
-     }
-   }
+
  
-   .max_footer{
-     background: scroll;
-  }
-  @media only screen and (max-width: 880px) {
-    .max_footer {
-      display: none;
-    }
-  }
+
   .f-right {
    text-align: right;
  }

@@ -9,15 +9,5 @@ export interface StepItem {
    
 }
 
-interface Ent {
-    id:            number;
-    name:          string;
-    localizedName: string;
-    image:         string;
-}
-interface Length {  
-    number: number;
-    unit:   string;
-}
 
 

@@ -42,16 +42,3 @@ export class AuthService {
 
 }
 
-
-
-
-/*
- login(username: string, password: string) {
-    return this.userService.login(username, password).pipe(
-      tap((response: any) => { 
-        this._isLoggedIn$.next(true); 
-        localStorage.setItem(this.TOKEN_NAME, response.token); // este metodo es para guardar el token en el localstorage
-      })
-    );
-  }
-*/

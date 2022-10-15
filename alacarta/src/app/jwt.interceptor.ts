@@ -25,10 +25,6 @@ export class JwtInterceptor implements HttpInterceptor {
           
         }     
       });
-      /*
-      console.log ('token', 'intercepetado')
-      this.router.navigate(['/home']);
-      */
     }
 
     return next.handle(request).pipe(

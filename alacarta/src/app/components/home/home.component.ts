@@ -76,11 +76,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    /*
-    if (this.totalItems <= 4){
-          this.cartHandleService.totalFinal = true;
-    }
-    */
+  
   }
 
   searchCart(event: string): void {
@@ -90,7 +86,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log()
+    this.clearCart()
 
   }
 
