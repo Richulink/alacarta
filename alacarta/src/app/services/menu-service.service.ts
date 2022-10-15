@@ -15,6 +15,9 @@ export class MenuServiceService {
   
     public menuSelected: any = { id: "" }
 
+
+  // ambas key funcionan por si se agotan las respuestas del dia
+
     apiKey: string = "fa36eb54158a4dbe801dbe5d9c5581b5";
   
     apiKey2: string = "9862d781ebf54bd6abff8539e5c68df8";
@@ -44,12 +47,3 @@ getURLIntolerance(): Observable<any> {
 }
 }
 
-// intolerance https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
-// https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
-
-// https://api.spoonacular.com/recipes/{id}/analyzedInstructions
-
-/*
-"https://api.spoonacular.com/recipes/716429/information?apiKey=9862d781ebf54bd6abff8539e5c68df8includeNutrition=false"
-https://api.spoonacular.com/recipes/716429/information?includeNutrition=false
-*/
